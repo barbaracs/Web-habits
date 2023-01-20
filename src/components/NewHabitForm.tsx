@@ -1,4 +1,5 @@
 import { Check } from "phosphor-react"
+import NewHabitCheckbox from "./NewHabitCheckbox"
 
 const NewHabitForm = () => {
     return(
@@ -24,6 +25,8 @@ const NewHabitForm = () => {
             >
                 Qual a recorrência?
             </label>
+
+            <NewHabitCheckbox />
 
             <button
                 type="submit"

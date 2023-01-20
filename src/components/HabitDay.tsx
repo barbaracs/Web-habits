@@ -2,6 +2,8 @@
 import * as Popover from '@radix-ui/react-popover';
 import clsx from 'clsx';
 import ProgressBar from './ProgressBar';
+import HabitCheckbox from './HabitCheckbox';
+
 
 interface HabitDayProps { 
     completed: number
@@ -13,7 +15,7 @@ const HabitDay = ({ completed, amount }: HabitDayProps) => {
 
     return (
         <Popover.Root>
-            <Popover.Trigger 
+            <Popover.Trigger
                 className={clsx('w-10 h-10 border-2 rounded-lg', {
                     'bg-zinc-900 border-zinc-800': percentageCompleted === 0,
                     'bg-violet-900 border-violet-700': percentageCompleted > 0 && percentageCompleted < 20,
@@ -37,6 +39,8 @@ const HabitDay = ({ completed, amount }: HabitDayProps) => {
                     </span>
 
                     <ProgressBar progress={percentageCompleted} />
+
+                    <HabitCheckbox />
 
                     <Popover.Arrow
                         height={8}
