@@ -3,7 +3,11 @@ import { FormEvent, useState } from "react"
 import { api } from "../lib/axios"
 import NewHabitCheckbox from "./NewHabitCheckbox"
 
-const NewHabitForm = () => {
+interface NewHabitFormProps {
+    setOpenModal: (open: boolean) => void 
+}
+
+const NewHabitForm = ({ setOpenModal }: NewHabitFormProps) => {
     const [habit, setHabit] = useState<string>('')
     const [weekDays, setWeekDays] = useState<number[]>([])
     
@@ -20,6 +24,7 @@ const NewHabitForm = () => {
 
             setHabit('')
             setWeekDays([])
+            setOpenModal(false)
         })
     }
 
