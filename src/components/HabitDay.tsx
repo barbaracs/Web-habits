@@ -29,7 +29,7 @@ const HabitDay = ({ date, completed = 0, amount = 0 }: HabitDayProps) => {
                     'bg-violet-700 border-violet-500': percentageCompleted >= 40 && percentageCompleted < 60,
                     'bg-violet-600 border-violet-500': percentageCompleted >= 60 && percentageCompleted < 80,
                     'bg-violet-500 border-violet-400': percentageCompleted >= 80,
-                })} 
+                })}
             />
 
             <Popover.Portal>

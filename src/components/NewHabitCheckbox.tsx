@@ -1,5 +1,6 @@
 import * as Checkbox from '@radix-ui/react-checkbox';
 import { Check } from 'phosphor-react';
+import { useEffect } from 'react';
 
 interface NewHabitCheckboxProps {
     weekDays: number[]
@@ -36,6 +37,7 @@ const NewHabitCheckbox = ({ weekDays, setWeekDays }: NewHabitCheckboxProps) => {
                         <Checkbox.Root
                             key={day}
                             className="flex items-center gap-3 group"
+                            checked={weekDays.includes(index)}
                             onCheckedChange={() => handleCheckWeekDay(index)}
                         >
                             <div 

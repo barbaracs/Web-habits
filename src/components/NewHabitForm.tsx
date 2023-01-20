@@ -1,5 +1,6 @@
 import { Check } from "phosphor-react"
 import { FormEvent, useState } from "react"
+import { api } from "../lib/axios"
 import NewHabitCheckbox from "./NewHabitCheckbox"
 
 const NewHabitForm = () => {
@@ -9,7 +10,17 @@ const NewHabitForm = () => {
     const createNewHabit = (event: FormEvent) => {
         event.preventDefault()
 
-        console.log('weekDays', weekDays)
+        if (!habit || weekDays.length === 0) return
+
+        api.post('habits', {
+            title: habit,
+            weekDays
+        }).then(() => {
+            alert('Hábito criado com sucesso!')
+
+            setHabit('')
+            setWeekDays([])
+        })
     }
 
     return (
@@ -30,6 +41,7 @@ const NewHabitForm = () => {
                 placeholder="Ex: fazer exercício, beber água, etc..."
                 className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
                 autoFocus
+                value={habit}
                 onChange={event => setHabit(event.target.value)}
             />
 
@@ -40,7 +52,10 @@ const NewHabitForm = () => {
                 Qual a recorrência?
             </label>
 
-            <NewHabitCheckbox weekDays={weekDays} setWeekDays={setWeekDays} />
+            <NewHabitCheckbox 
+                weekDays={weekDays} 
+                setWeekDays={setWeekDays}
+            />
 
             <button
                 type="submit"
