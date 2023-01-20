@@ -5,13 +5,16 @@ import ProgressBar from './ProgressBar';
 import HabitCheckbox from './HabitCheckbox';
 
 
-interface HabitDayProps { 
-    completed: number
-    amount: number
+interface HabitDayProps {
+    date: Date
+    completed?: number
+    amount?: number
 }
 
-const HabitDay = ({ completed, amount }: HabitDayProps) => {
-    const percentageCompleted = Math.round((completed / amount) * 100)
+const HabitDay = ({ date, completed = 0, amount = 0 }: HabitDayProps) => {
+    const percentageCompleted = amount > 0
+        ? Math.round((completed / amount) * 100) 
+        : 0
 
     return (
         <Popover.Root>
