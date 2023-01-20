@@ -1,9 +1,22 @@
 import { Check } from "phosphor-react"
+import { FormEvent, useState } from "react"
 import NewHabitCheckbox from "./NewHabitCheckbox"
 
 const NewHabitForm = () => {
-    return(
-        <form className="w-full flex flex-col mt-6">
+    const [habit, setHabit] = useState<string>('')
+    const [weekDays, setWeekDays] = useState<number[]>([])
+    
+    const createNewHabit = (event: FormEvent) => {
+        event.preventDefault()
+
+        console.log('weekDays', weekDays)
+    }
+
+    return (
+        <form 
+            onSubmit={createNewHabit}
+            className="w-full flex flex-col mt-6"
+        >
             <label
                 htmlFor="title"
                 className="font-semibold leading-tight"
@@ -17,6 +30,7 @@ const NewHabitForm = () => {
                 placeholder="Ex: fazer exercício, beber água, etc..."
                 className="p-4 rounded-lg mt-3 bg-zinc-800 text-white placeholder:text-zinc-400"
                 autoFocus
+                onChange={event => setHabit(event.target.value)}
             />
 
             <label
@@ -26,7 +40,7 @@ const NewHabitForm = () => {
                 Qual a recorrência?
             </label>
 
-            <NewHabitCheckbox />
+            <NewHabitCheckbox weekDays={weekDays} setWeekDays={setWeekDays} />
 
             <button
                 type="submit"
