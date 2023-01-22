@@ -29,7 +29,7 @@ const HabitDay = ({ date, defaultCompleted = 0, amount = 0 }: HabitDayProps) => 
     return (
         <Popover.Root>
             <Popover.Trigger
-                className={clsx('w-10 h-10 border-2 rounded-lg', {
+                className={clsx('w-10 h-10 border-2 rounded-lg transition-colors', {
                     'bg-zinc-900 border-zinc-800': percentageCompleted === 0,
                     'bg-violet-900 border-violet-700': percentageCompleted > 0 && percentageCompleted < 20,
                     'bg-violet-800 border-violet-600': percentageCompleted >= 20 && percentageCompleted < 40,
