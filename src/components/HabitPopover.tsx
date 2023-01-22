@@ -6,6 +6,7 @@ import { api } from '../lib/axios';
 
 interface HabitPopoverProps {
     date: Date
+    onCompletedChange: (completed: number) => void
 }
 
 interface HabitsInfo {
@@ -17,7 +18,7 @@ interface HabitsInfo {
     completedHabits: string[]
 }
 
-const HabitPopover = ({ date }: HabitPopoverProps) => {
+const HabitPopover = ({ date, onCompletedChange }: HabitPopoverProps) => {
     const [habitsInfo, setHabitsInfo] = useState<HabitsInfo>()
 
     const isDateInPast = dayjs(date).endOf('day').isBefore(new Date())
@@ -45,6 +46,8 @@ const HabitPopover = ({ date }: HabitPopoverProps) => {
             possibleHabits: habitsInfo!.possibleHabits,
             completedHabits
         })
+
+        onCompletedChange(completedHabits.length)
     }
 
     return(
