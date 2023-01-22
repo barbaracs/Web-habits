@@ -2,7 +2,7 @@
 import * as Popover from '@radix-ui/react-popover';
 import clsx from 'clsx';
 import ProgressBar from './ProgressBar';
-import HabitCheckbox from './HabitCheckbox';
+import HabitPopover from './HabitPopover';
 import dayjs from 'dayjs';
 
 interface HabitDayProps {
@@ -33,7 +33,7 @@ const HabitDay = ({ date, completed = 0, amount = 0 }: HabitDayProps) => {
             />
 
             <Popover.Portal>
-                <Popover.Content 
+                <Popover.Content
                     className="min-w-[320px] p-6 rounded-2xl bg-zinc-900 flex flex-col"
                 >
                     <span className="font-semibold text-zinc-400">
@@ -46,7 +46,7 @@ const HabitDay = ({ date, completed = 0, amount = 0 }: HabitDayProps) => {
 
                     <ProgressBar progress={percentageCompleted} />
 
-                    <HabitCheckbox />
+                    <HabitPopover date={date} />
 
                     <Popover.Arrow
                         height={8}
